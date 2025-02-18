@@ -8,6 +8,8 @@ export class SuperheroesService {
 
   create(createSuperheroDto: CreateSuperheroDto): Superhero {
     const superhero: Superhero = {
+      // basic ID generation using incrementing integer
+      // not recommended for production - I would use a guuid instead, but for this small app it's fine
       id: this.superheroes.length + 1,
       ...createSuperheroDto,
     };
@@ -16,6 +18,7 @@ export class SuperheroesService {
   }
 
   findAll(): Superhero[] {
+    // sort by humility score in descending order
     return this.superheroes.sort((a, b) => b.humilityScore - a.humilityScore);
   }
 }
